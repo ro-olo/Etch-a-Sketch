@@ -11,8 +11,8 @@ for ( i = 0; i < size; i++ ) {
         //row.innerHTML = i + "," +j;
         col.appendChild(row);
         row.classList.add('rows');
-          row.classList.add('items');
-          col.classList.add('items');
+        row.classList.add('items');
+          //col.classList.add('items');
     }
   }
 }
@@ -20,6 +20,7 @@ for ( i = 0; i < size; i++ ) {
 makeGrid(16);
 
 let items = document.querySelectorAll('.items');
+let button = document.querySelector('button');
 
 items.forEach((items) => {
     items.addEventListener('mouseenter', () => {
@@ -31,13 +32,16 @@ items.forEach((items) => {
     items.addEventListener('click', () => {
         items.classList.toggle('switch');
     })
+    button.addEventListener('click', () => {
+        items.classList.remove('switch')
+    })
 
 })
 
-let button = document.querySelector('button');
 button.addEventListener('mouseenter', () => {
     button.classList.add('changed');
 })
 button.addEventListener('mouseleave', () => {
     button.classList.remove('changed');
 })
+
