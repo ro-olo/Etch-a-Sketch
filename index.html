@@ -8,14 +8,34 @@
     <body>
         <script src="javascript.js" defer></script>
         <div class="square">
-            <div class="heading">
-            <h1>Hetch-a-Sketch</h1>
-            </div>
-            <div class="container">
-            </div>
-            <div class="again">
-                <button id="restart">Restart</button>
-            </div>
+                <div class="heading">
+                <h1>Etch-a-Sketch</h1>
+                </div>
+                <div class="upper">
+                    <div class="dropdownSize">
+                        <p class="dropP">Size</p>
+                        <div class="dropdownSize-content">
+                            <div class="sizeList"><div id="8" data-size="8"></div><div>8x8</div></div>
+                            <div class="sizeList"><div id="12" data-size="12"></div><div>12x12</div></div>
+                            <div class="sizeList"><div id="16" data-size="16"></div><div>16x16</div></div>
+                            <div class="sizeList"><div id="18" data-size="18"></div><div>18x18</div></div>
+                        </div>
+                    </div>
+                    <div class="dropdownColor">
+                        <p class="dropP">Colors</p>
+                        <div class="dropdownColor-content">
+                          <div class="list"><div id="black" data-color="black"></div><div>Black</div></div>  
+                          <div class="list"><div id="dGray" data-color="dGray"></div><div>Dark gray</div></div>  
+                          <div class="list"><div id="lGray" data-color="lGray"></div><div>Light gray</div></div>
+                          <div class="list"><div id="white" data-color="white"></div><div>White</div></div> 
+                        </div>
+                    </div>
+                </div> 
+                <div class="container">
+                </div>
+                    <div class="again">
+                      <button id="restart">Restart</button>
+                    </div>
         </div>
     </body>
 </html>

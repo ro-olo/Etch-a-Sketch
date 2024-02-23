@@ -1,1 +1,2 @@
 # Etch-a-Sketch
+Etch-a-Sketch is a drawing pad in which you can select a color and create some pixel art by coloring the squares of the grid. It also gives you the possibility to change the amount of pixels in the grid.

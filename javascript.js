@@ -1,42 +1,89 @@
 const container = document.querySelector('.container'); 
+let chosenColor = 'black';
 
-function makeGrid(size) {
-for ( i = 0; i < size; i++ ) {
-    let col = document.createElement('div');
-    container.appendChild(col);
-    col.classList.add('columns');
+document.addEventListener('DOMContentLoaded', function() {
+    makeGrid(16);
+});
 
-    for ( j = 0; j < size; j++ ) {
+function makeGrid(chosenSize) {
+
+    while (container.firstChild) {
+        container.removeChild(container.lastChild);
+    }
+    
+    for ( i = 0; i < chosenSize; i++ ) {
+        let col = document.createElement('div');
+        container.appendChild(col);
+        col.classList.add('columns');
+
+        for ( j = 0; j < chosenSize; j++ ) {
         let row = document.createElement('div');
-        //row.innerHTML = i + "," +j;
         col.appendChild(row);
         row.classList.add('rows');
         row.classList.add('items');
-          //col.classList.add('items');
+
+        let items = document.querySelectorAll('.items');
+        items.forEach((item) => {
+            item.addEventListener('mouseenter', () => {
+                item.classList.add('hover');
+            })
+            item.addEventListener('mouseleave', () => {
+                item.classList.remove('hover');
+            })
+            item.addEventListener('click', () => {
+                removeColor(item);
+                switch (chosenColor) {
+                    case 'dGray':
+                    item.classList.toggle('switchDgray');
+                    break;
+                    case 'lGray':
+                    item.classList.toggle('switchLgray');
+                    break;
+                    case 'white':
+                    item.classList.toggle('switchWhite');
+                    break;
+                    default:
+                    item.classList.toggle('switch');
+                }
+        
+                button.addEventListener('click', () => {
+                    item.classList.remove('switch');
+                    item.classList.remove('switchDgray');
+                    item.classList.remove('switchLgray');
+                    item.classList.remove('switchWhite');
+                })
+            })
+
+            item.addEventListener("dblclick", () => {
+                item.classList.remove('switch');
+                item.classList.remove('switchDgray');
+                item.classList.remove('switchLgray');
+                item.classList.remove('switchWhite');
+            });
+
+        })
+        }
     }
-  }
 }
 
-makeGrid(16);
+function removeColor(element) {
+    element.classList.remove('switch');
+    element.classList.remove('switchDgray');
+    element.classList.remove('switchLgray');
+    element.classList.remove('switchWhite');
+}
 
-let items = document.querySelectorAll('.items');
-let button = document.querySelector('button');
-
-items.forEach((items) => {
-    items.addEventListener('mouseenter', () => {
-        items.classList.add('hover');
-    })
-    items.addEventListener('mouseleave', () => {
-        items.classList.remove('hover');
-    })
-    items.addEventListener('click', () => {
-        items.classList.toggle('switch');
-    })
-    button.addEventListener('click', () => {
-        items.classList.remove('switch')
-    })
-
+let sizes = document.querySelectorAll('.sizeList');
+sizes.forEach((size) => {
+    size.addEventListener('click', () => {
+            chosenSize = size.firstChild.getAttribute('data-size'); 
+            makeGrid(chosenSize)
+        }) 
 })
+
+makeGrid();
+
+let button = document.querySelector('button');
 
 button.addEventListener('mouseenter', () => {
     button.classList.add('changed');
@@ -44,4 +91,11 @@ button.addEventListener('mouseenter', () => {
 button.addEventListener('mouseleave', () => {
     button.classList.remove('changed');
 })
+
+let colors = document.querySelectorAll('.list');
+    colors.forEach((color) => {
+        color.addEventListener ('click', () => {
+            chosenColor = color.firstChild.getAttribute('data-color');
+        })
+    })
 
